@@ -97,14 +97,14 @@
 	    <repository>
 	      <id>sabareesh-nexus</id>
 	      <name>sabareesh-java-ear</name>
-	      <url>http:localhost:8081/repository/sabareesh-releases/</url>
+	      <url>http://localhost:8081/repository/maven-releases/</url>
 	    </repository>
 
 	
 	    <snapshotRepository>
 	      <id>sabareesh-nexus</id>
 	      <name>sabareesh-java-ear</name>
-	      <url>http://localhost:8081/repository/sabareesh-snapshots/</url>
+	      <url>http://localhost:8081/repository/maven-snapshots/</url>
 	    </snapshotRepository>
 
 	    
