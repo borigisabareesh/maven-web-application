@@ -95,7 +95,7 @@
 	<distributionManagement>
 	
 	    <repository>
-	      <id>nexus</id>
+	      <id>sabareesh-nexus</id>
 	      <name>sabareesh-java-ear</name>
 	      <url>http:localhost:8081/repository/sabareesh-java-ear/</url>
 	    </repository>
