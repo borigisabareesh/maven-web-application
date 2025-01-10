@@ -2,7 +2,9 @@ name: build example
 
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - cicd
   
 jobs:
 
