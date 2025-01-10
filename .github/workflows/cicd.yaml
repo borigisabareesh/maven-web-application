@@ -1,8 +1,6 @@
 name: maven-build-example
 on:
-  push:
-    branches: 
-      - 'feature/cicd'
+  workflow_dispatch:
 jobs:
   say-hello:
     runs-on: sabareesh-asus
