@@ -27,6 +27,11 @@ jobs:
         run: mvn clean install
       - name: Run tests
         run: mvn test 
+      - name: Test SonarQube
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          curl -v -u ${{ env.SONAR_TOKEN }}: http://192.168.29.77:9000/api/user_tokens/search
       - name: sonar build
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
