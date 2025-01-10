@@ -1,6 +1,8 @@
 name: maven-build-example
+
 on:
   workflow_dispatch:
+  
 jobs:
   say-hello:
     runs-on: sabareesh-asus
