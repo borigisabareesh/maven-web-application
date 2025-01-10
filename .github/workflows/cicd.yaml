@@ -25,9 +25,13 @@ jobs:
             {{ runner.os }}-m2
       - name: maven build
         run: mvn clean install
+      - name: check DNS resolution
+        run: nslookup google.com
       - name: Check Internet Connectivity
         run: |
           ping -c 4 google.com
+      - name: test http connectivity
+        run: curl -I https://www.google.com
       - name: Run tests
         run: mvn test 
       - name: Test SonarQube
