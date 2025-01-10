@@ -5,7 +5,7 @@ on:
       - 'feature/cicd'
 jobs:
   say-hello:
-    runs-on: ubuntu-latest
+    runs-on: sabareesh-asus
     steps:
       - name: clone replo
         uses: actions/checkout@v3
