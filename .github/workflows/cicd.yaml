@@ -25,6 +25,9 @@ jobs:
             {{ runner.os }}-m2
       - name: maven build
         run: mvn clean install
+      - name: Check Internet Connectivity
+        run: |
+          ping -c 4 google.com
       - name: Run tests
         run: mvn test 
       - name: Test SonarQube
