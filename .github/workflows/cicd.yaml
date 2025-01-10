@@ -31,5 +31,5 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_URL: ${{ secrets.SONAR_URL }}
-        run: mvn -f src/pom.xml clean verify sonar:sonar -Dsonar.host.url=${{ secrets.SONAR_URL }}
+        run: mvn -f pom.xml clean verify sonar:sonar -Dsonar.host.url=${{ secrets.SONAR_URL }}
         
