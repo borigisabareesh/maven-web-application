@@ -27,4 +27,9 @@ jobs:
         run: mvn clean install
       - name: Run tests
         run: mvn test 
+      - name: sonar build
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_URL: ${{secrets.SONAR_URL }}
+        run: mvn clean verify sonar:sonar  
         
