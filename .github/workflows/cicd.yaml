@@ -1,0 +1,19 @@
+name: maven-build-example
+on:
+  push:
+    branches: 
+      - 'feature/cicd'
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone replo
+        uses: actions/checkout@v3
+      - name: verfiy maven
+        run: mvn -version
+      - name: Setup Jdk 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '11'
+        
