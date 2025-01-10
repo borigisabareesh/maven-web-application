@@ -15,7 +15,6 @@ jobs:
         uses: actions/checkout@v3
       - name: verfiy maven
         run: mvn -version
-        shell: powershell
       - name: Setup Jdk 11
         uses: actions/setup-java@v4
         with:
