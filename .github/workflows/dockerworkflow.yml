@@ -55,4 +55,7 @@ jobs:
       - name: Build Docker Images
         run: |
           docker build -t borigisabareesh/mvn-web-app:${{ github.sha }} .
+      - name: Push Docker Images
+        run: |
+          docker push borigisabareesh/mvn-web-app:${{ github.sha }}
         
