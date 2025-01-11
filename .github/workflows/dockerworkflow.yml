@@ -58,6 +58,8 @@ jobs:
       - name: Push Docker Images
         run: |
           docker push borigisabareesh/mvn-web-app:${{ github.sha }}
+      - name: check pwd
+        run: pwd
       - name: Update deployment tag
         run: |
           sed -i 's/\(dockerhandson\/maven-web-application:\).*/\1${{ github.sha }}/' mavenwebappdeployment.yaml
