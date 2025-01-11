@@ -18,7 +18,7 @@ jobs:
         with:
           maven-version: 3.8.2
       - name: verfiy maven
-        run: mvn -v
+        run: mvn -version
       - name: Setup Jdk 11
         uses: actions/setup-java@v4
         with:
