@@ -1,4 +1,4 @@
-name: Java CI with Docker
+name: Java CI with Dockerimage
 
 on:
   push:
