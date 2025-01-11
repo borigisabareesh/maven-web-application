@@ -62,7 +62,7 @@ jobs:
         run: ls
       - name: Update deployment tag
         run: |
-          sed -i "s/\(dockerhandson\/maven-web-application:\).*/\1${{ github.sha }}/" mavenwebappdeployment.yaml
+          sed -i "s/\(dockerhandson\/maven-web-application:\).*/\1 ${{ github.sha }}/" mavenwebappdeployment.yaml
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add mavenwebappdeployment.yaml
