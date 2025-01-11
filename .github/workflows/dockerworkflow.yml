@@ -58,4 +58,15 @@ jobs:
       - name: Push Docker Images
         run: |
           docker push borigisabareesh/mvn-web-app:${{ github.sha }}
+      - name: Update deployment tag
+        run: |
+          sed -i 's/\(dockerhandson\/maven-web-application:\).*/\1${{ github.sha }}/' mavenwebappdeployment.yaml
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add mavenwebappdeployment.yaml
+          git commit -m "Update deployment tag in mavenwebappdeployment.yaml"
+          git push
+
+      - name: Verify updated file
+        run: cat mavenwebappdeployment.yaml
         
