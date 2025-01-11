@@ -36,9 +36,10 @@ jobs:
       - name: Run tests
         run: mvn test
       - name: sonar build
-        env:
-          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
-        run: |
-          mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-          -Dsonar.organization=borigisabareesh \
-          -Dsonar.host.url=https://sonarcloud.io
+        uses: exo-actions/sonarcloud-action@1.0.0
+        with:
+         maven_version: 3.8.2
+         jdk_major_version: 11
+    # OpenJDK Adopted Distribution (temurin, zulu, adopt, liberica,...)
+         jdk_distribution: temurin
+         SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
