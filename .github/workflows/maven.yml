@@ -36,7 +36,7 @@ jobs:
       - name: check DNS resolution
         run: nslookup google.com
       - name: test http connectivity
-        run: curl -I http://192.168.29.77:9000
+        run: curl -I https://google.com
       - name: Run tests
         run: mvn test 
       - name: Test SonarQube
