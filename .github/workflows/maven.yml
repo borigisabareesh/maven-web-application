@@ -13,8 +13,10 @@ jobs:
     steps:
       - name: clone the replo
         uses: actions/checkout@v3
-      - name: Install Maven
-        run: choco install maven
+      - name: Update PATH for Maven
+        run: |
+          $mavenPath = "D:\Program Files\Maven\apache-maven-3.9.9\bin"  # Update this to where Maven is installed
+          echo "$mavenPath;$Env:PATH" | Set-Content -Path $Env:GITHUB_ENV -Encoding utf8 -Append
       - name: verfiy maven
         run: mvn -v
       - name: Setup Jdk 11
