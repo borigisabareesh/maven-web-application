@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: clone the replo
         uses: actions/checkout@v3
+      - name: Install Maven
+        run: choco install maven
       - name: verfiy maven
         run: mvn -v
       - name: Setup Jdk 11
