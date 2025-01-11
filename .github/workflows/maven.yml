@@ -33,10 +33,11 @@ jobs:
             {{ runner.os }}-m2
       - name: maven build
         run: mvn clean install
-      - name: check DNS resolution
-        run: nslookup google.com
-      - name: test http connectivity
-        run: curl -I https://google.com
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}     
       - name: Run tests
         run: mvn test 
       - name: Test SonarQube
