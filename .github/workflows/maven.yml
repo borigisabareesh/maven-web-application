@@ -43,3 +43,5 @@ jobs:
     # OpenJDK Adopted Distribution (temurin, zulu, adopt, liberica,...)
          jdk_distribution: temurin
          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
+      - name: maven package 
+        run: mvn clean package
