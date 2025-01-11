@@ -62,7 +62,7 @@ jobs:
         run: ls
       - name: Update deployment tag
         run: |
-          sed -i 's~borigisabareesh/mvn-web-app:[^"]*~borigisabareesh/mvn-web-app:${{ githun.sha }}~' mavenwebappdeployment.yaml
+          sed -i 's~borigisabareesh/mvn-web-app:[^"]*~borigisabareesh/mvn-web-app:${{ github.sha }}~' mavenwebappdeployment.yaml
           cat mavenwebappdeployment.yaml
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
