@@ -74,6 +74,12 @@ jobs:
         run: cat mavenwebappdeployment.yaml
       - name: debug issue
         run: echo ${HOME} && pwd
+      - name: Deploy to k8s
+        uses: stefanzweifel/k8s-action@v2.0.0
+        with:
+          args: apply -f mavenwebappdeployment.yaml
+        env:
+          KUBECONFIG: ${{ env.secrets.KUBE1_CONFIG }}
       - name: Create kubeconfig
         run: |
           mkdir -p ${HOME}/.kube
