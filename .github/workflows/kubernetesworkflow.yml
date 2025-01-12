@@ -91,5 +91,5 @@ jobs:
         run: kubectl get nodes
       - name: Deploy to K8s
         run: kubectl apply -f mavenwebappdeployment.yaml --validate=false
-      - name: verify pods
+      - name: verify pods k8
         run: kubectl get pods
