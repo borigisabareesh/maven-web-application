@@ -74,25 +74,25 @@ jobs:
         run: cat mavenwebappdeployment.yaml
       - name: debug issue
         run: echo ${HOME} && pwd
-      - name: Deploy to k8s
-        uses: stefanzweifel/k8s-action@v2.0.0
+      - name: Kind Cluster
+  # You may pin to the exact commit or the version.
+  # uses: helm/kind-action@0025e74a8c7512023d06dc019c617aa3cf561fde
+        uses: helm/kind-action@v1.10.0
         with:
-          args: apply -f mavenwebappdeployment.yaml
-        env:
-          KUBECONFIG: ${{ env.secrets.KUBE1_CONFIG }}
-      - name: Create kubeconfig
-        run: |
-          mkdir -p ${HOME}/.kube
-          echo "${{ secrets.KUBE1_CONFIG }}" > ${HOME}/.kube/config
-          cat ${HOME}/.kube/config
+          cluster_name: samplemicroservice
+      #- name: Create kubeconfig
+       # run: |
+       #   mkdir -p ${HOME}/.kube
+        #  echo "${{ secrets.KUBE1_CONFIG }}" > ${HOME}/.kube/config
+         # cat ${HOME}/.kube/config
 
       #- name: Create kubeconfig
        # run: |
         #  mkdir -p ${HOME}/.kube
          # echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
           #cat ${HOME}/.kube/config
-      - name: Use context
-        run: kubectl config use-context kind-samplemicroservice
+      #- name: Use context
+      #  run: kubectl config use-context kind-samplemicroservice
       - name: kube check
         run: kubectl get nodes
       - name: Deploy to K8s cluster
