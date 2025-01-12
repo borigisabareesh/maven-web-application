@@ -99,4 +99,19 @@ jobs:
         run: kubectl apply -f mavenwebappdeployment.yaml --validate=false
       - name: verify pods k8
         run: kubectl get pods
+      - name: Wait for the pods to be ready
+        run: |
+          kubectl wait --for=condition=ready pod -l app=mavenwebappdeployment --timeout=600s
+      - name: Get service URL
+        run: |
+          kubectl get svc mavenwebappsvc -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+
+      - name: Port forward service to GitHub Actions runner
+        run: |
+          kubectl port-forward svc/mavenwebappsvc 8080:80 &  # Assuming service port is 80, and we forward it to port 8080
+          sleep 10  # Allow time for port-forward to set up
+
+      - name: Test the service (curl)
+        run: |
+          curl http://localhost:8080
         
