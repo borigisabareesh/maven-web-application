@@ -74,7 +74,7 @@ jobs:
         run: cat mavenwebappdeployment.yaml
       - name: Create kubeconfig
         run: |
-          mkdir ${HOME}/.kube
+          mkdir -p ${HOME}/.kube
           echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
           cat ${HOME}/.kube/config
       - name: Use context
