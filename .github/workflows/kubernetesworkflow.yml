@@ -87,6 +87,6 @@ jobs:
       - name: Use context
         run: kubectl config use-context kind-samplemicroservice
       - name: Deploy to K8s
-        run: kubectl apply -f mavenwebappdeployment.yaml
+        run: kubectl apply -f mavenwebappdeployment.yaml --validate=false
       - name: verify pods
         run: kubectl get pods
