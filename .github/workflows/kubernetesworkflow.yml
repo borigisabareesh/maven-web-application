@@ -1,11 +1,8 @@
 name: Java CI with  k8 workflow
 
 on:
-  push:
-    branches:
-      - cicd
+  workflow_dispatch:
       
-
 jobs:
   build:
 
@@ -72,6 +69,8 @@ jobs:
 
       - name: Verify updated file
         run: cat mavenwebappdeployment.yaml
+      - name: debug issue
+        run: echo ${HOME} && pwd
       - name: Create kubeconfig
         run: |
           mkdir -p ${HOME}/.kube
