@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: mavenwebappcontainer
-          image: borigisabareesh/mvn-web-app:14f5ed7e27eaba030a6bcdac56d0ae47cfebff10
+          image: borigisabareesh/mvn-web-app:e141542968dab20f0853c20c6c54e5370bc39ea8
           ports:
             - containerPort: 8080
           resources:
