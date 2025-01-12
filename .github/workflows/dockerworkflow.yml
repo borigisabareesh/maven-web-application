@@ -55,6 +55,15 @@ jobs:
       - name: Build Docker Images
         run: |
           docker build -t borigisabareesh/mvn-web-app:${{ github.sha }} .
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: 'borigisabareesh/mvn-web-app:${{ github.sha }}'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
       - name: Push Docker Images
         run: |
           docker push borigisabareesh/mvn-web-app:${{ github.sha }}
@@ -102,13 +111,3 @@ jobs:
       - name: Get service URL
         run: |
           kubectl get svc
-
-      - name: Port forward service to GitHub Actions runner
-        run: |
-          kubectl port-forward svc/mavenwebappsvc 8080:80 &  # Assuming service port is 80, and we forward it to port 8080
-          sleep 10  # Allow time for port-forward to set up
-
-      - name: Test the service (curl)
-        run: |
-          curl http://localhost:8080
-        
