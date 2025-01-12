@@ -1,7 +1,10 @@
 name: Java CI with  k8 workflow
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - cicd
+      
       
 jobs:
   build:
