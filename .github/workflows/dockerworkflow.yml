@@ -1,4 +1,4 @@
-name: Java CI with Dockerimage
+name: Java CI with Dockerimage and k8
 
 on:
   push:
@@ -89,7 +89,7 @@ jobs:
         run: kubectl config use-context kind-samplemicroservice
       - name: kube check
         run: kubectl get nodes
-      - name: Deploy to K8s
+      - name: Deploy to K8s cluster
         run: kubectl apply -f mavenwebappdeployment.yaml --validate=false
       - name: verify pods k8
         run: kubectl get pods
