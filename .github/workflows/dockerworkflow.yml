@@ -72,4 +72,25 @@ jobs:
 
       - name: Verify updated file
         run: cat mavenwebappdeployment.yaml
+      - name: debug issue
+        run: echo ${HOME} && pwd
+      - name: Create kubeconfig
+        run: |
+          mkdir -p ${HOME}/.kube
+          echo "${{ secrets.KUBE1_CONFIG }}" > ${HOME}/.kube/config
+          cat ${HOME}/.kube/config
+
+      #- name: Create kubeconfig
+       # run: |
+        #  mkdir -p ${HOME}/.kube
+         # echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
+          #cat ${HOME}/.kube/config
+      - name: Use context
+        run: kubectl config use-context kind-samplemicroservice
+      - name: kube check
+        run: kubectl get nodes
+      - name: Deploy to K8s
+        run: kubectl apply -f mavenwebappdeployment.yaml --validate=false
+      - name: verify pods k8
+        run: kubectl get pods
         
